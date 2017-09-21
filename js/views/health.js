@@ -29,7 +29,14 @@ app.foodView = Backbone.View.extend({
 
     // This function adds the result item model to the selected results collection
     // when the add button is selected
-    addToSelected: function() {
+    addToSelected(e) {
+
+      if (this.$el.hasClass('disabled')) return;
+
+      // hide add button
+      e.target.style.display = 'none';
+      this.$el.addClass('disabled');
+
         var newItem = new app.foodModel({
             name: this.model.get('name'),
             brand: this.model.get('brand'),

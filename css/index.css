@@ -20,6 +20,15 @@ h1 {
 	letter-spacing: 0.03em;
 }
 
+h2 {
+	text-align: center;
+	font-weight: 100;
+	font-size: 2.0em;
+	padding: 30px;
+	color: #FC3544;
+	letter-spacing: 0.03em;
+}
+
 table {
 	width: 100%;
 }
@@ -51,6 +60,11 @@ button, #searchButton, #clearResults, #clearSelected {
 	cursor: pointer;
 }
 
+.loader {
+  display:none;
+  margin: auto;
+}
+
 #clearSelected {
 	display: block;
 	margin: 30px auto;
@@ -66,6 +80,7 @@ button, #searchButton, #clearResults, #clearSelected {
 	width: 300px;
 	padding-left: 10px;
 	font-size: .75em;
+	display: inline-block;
 }
 
 #resultsSection {

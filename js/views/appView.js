@@ -86,6 +86,10 @@ app.AppView = Backbone.View.extend({
         var searchTerm = $('#searchBar').val();
         $('#searchBar').val('');
         var nutritionixUrl = 'https://api.nutritionix.com/v1_1/search/' + searchTerm + '?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=79638cff&appKey=a7129008b91c0ae9412ae2316564d518'
+
+        //Show loader gif
+        $(".loader").fadeIn();
+
         $.ajax({
             method: 'GET',
             url: nutritionixUrl,
@@ -99,14 +103,21 @@ app.AppView = Backbone.View.extend({
                         calories: jsonArray[i].fields.nf_calories,
                     });
                     app.foods.create(resultItem);
-                } // This is the End of the for loop
-
+                }
+                if (jsonArray.length == 0) {
+                    $('#searchResults').append('<h2>Sorry! No results were found. Please try entering a different item</h2>');
+                }
             },
             error: function() {
-                $('#searchResults').append('<p>Couldn\'t retrieve Nutritionix data. Please check internet connection or try again later.</p>');
+                $('#searchResults').append('<h2>Couldn\'t retrieve Nutritionix data. Please check internet connection or try again later.</h2>');
             }
+
         });
+        //fade out loader gif
+        $(".loader").fadeOut(500);
     },
+
+
 
     // This function will destroy models in foods collection
     clearResults: function() {
