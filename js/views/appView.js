@@ -73,6 +73,7 @@ app.AppView = Backbone.View.extend({
             model: item
         });
         $('#selectedResults').append(selectedItem.render().el);
+        this.clearResults();
     },
 
     // Renders the selected items that are stores in the *localStorage*
